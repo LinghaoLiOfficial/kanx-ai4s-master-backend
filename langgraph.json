@@ -1,0 +1,6 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "kanx_ai4s_master.modules.ai.graph:compiled_graph"
+  }
+}

@@ -1,0 +1,8 @@
+composition_version = 2
+name = "kanx-ai4s-master"
+version = "0.1.0"
+description = "Generated backend project"
+slug = "kanx-ai4s-master"
+package = "kanx_ai4s_master"
+profile = "custom"
+modules = ["database", "temporal", "ai", "jobs"]
