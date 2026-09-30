@@ -1,6 +1,11 @@
 INSTALLED_MODULES = (
     "database",
     "temporal",
-    "ai",
     "jobs",
+    "users",
+    "rbac",
+    "email",
+    "auth",
+    "storage",
+    "ai",
 )

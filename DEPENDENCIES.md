@@ -1,4 +1,4 @@
 # Dependencies
 
 Run `uv lock` after generation to create the project-specific lock file.
-The selected profile is `custom`; optional dependencies are declared in `pyproject.toml`.
+The selected profile is `full`; optional dependencies are declared in `pyproject.toml`.

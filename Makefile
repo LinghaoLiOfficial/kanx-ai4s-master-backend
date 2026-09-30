@@ -3,22 +3,22 @@
 
 export PYTHONPATH := $(CURDIR)/src$(if $(PYTHONPATH),:$(PYTHONPATH))
 dev:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	uv run python -m kanx_ai4s_master.dev dev
 dev-workflow:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	APP_PROFILE=workflow uv run python -m kanx_ai4s_master.dev dev
 dev-ai:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	APP_PROFILE=ai uv run python -m kanx_ai4s_master.dev dev
 dev-identity:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	APP_PROFILE=identity uv run python -m kanx_ai4s_master.dev dev
 dev-saas:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	APP_PROFILE=saas uv run python -m kanx_ai4s_master.dev dev
 dev-full:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	APP_PROFILE=full uv run python -m kanx_ai4s_master.dev dev
 gradio:
 	uv run python -m kanx_ai4s_master.gradio_app
@@ -35,7 +35,7 @@ infra-status:
 infra-reset:
 	uv run python -m kanx_ai4s_master.dev infra-reset
 check:
-	uv sync --extra workflow --extra ai
+	uv sync --extra workflow --extra ai --extra identity --extra saas --extra full
 	uv run python -m ruff format .
 	uv run python -m ruff check .
 	uv run python -m mypy src

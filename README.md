@@ -1,6 +1,6 @@
 # kanx-ai4s-master
 
-Generated backend project using the `custom` profile.
+Generated backend project using the `full` profile.
 
 ```bash
 cp .env.example .env
@@ -8,7 +8,7 @@ uv sync
 make dev
 ```
 
-Installed modules: `('database', 'temporal', 'ai', 'jobs')`.
+Installed modules: `('database', 'temporal', 'jobs', 'users', 'rbac', 'email', 'auth', 'storage', 'ai')`.
 
 The generated project uses Docker only for local PostgreSQL, Temporal, Mailpit and
 MinIO when the selected modules require them. The API, Temporal worker, outbox
