@@ -4,7 +4,8 @@ from ..modules.database.audit import AuditEvent as _models_1  # noqa: F401
 from ..modules.jobs import models as _models_2  # noqa: F401
 from ..modules.rbac import models as _models_3  # noqa: F401
 from ..modules.storage import models as _models_4  # noqa: F401
-from ..modules.users import models as _models_5  # noqa: F401
+from ..modules.users import models as _models_6  # noqa: F401
+from ..modules.workspace_files import models as _models_5  # noqa: F401
 
 REGISTERED_MODEL_MODULES = (
     "modules.database.audit.AuditEvent",
@@ -13,4 +14,5 @@ REGISTERED_MODEL_MODULES = (
     "modules.rbac.models",
     "modules.auth.models",
     "modules.storage.models",
+    "modules.workspace_files.models",
 )

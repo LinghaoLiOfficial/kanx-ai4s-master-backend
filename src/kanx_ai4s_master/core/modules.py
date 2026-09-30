@@ -157,6 +157,10 @@ def load_modules(settings: Settings) -> tuple[ModuleSpec, ...]:
         from ..modules.storage.module import module as storage
 
         registry[storage.name] = storage
+    if "workspace_files" in INSTALLED_MODULES:
+        from ..modules.workspace_files.module import module as workspace_files
+
+        registry[workspace_files.name] = workspace_files
     modules = resolve_modules(INSTALLED_MODULES, registry)
     validate_module_registrations(modules)
     return modules

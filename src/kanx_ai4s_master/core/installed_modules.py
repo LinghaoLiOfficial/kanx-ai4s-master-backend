@@ -7,5 +7,6 @@ INSTALLED_MODULES = (
     "email",
     "auth",
     "storage",
+    "workspace_files",
     "ai",
 )
