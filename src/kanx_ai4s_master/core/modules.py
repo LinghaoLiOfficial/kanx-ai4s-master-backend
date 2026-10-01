@@ -161,6 +161,10 @@ def load_modules(settings: Settings) -> tuple[ModuleSpec, ...]:
         from ..modules.workspace_files.module import module as workspace_files
 
         registry[workspace_files.name] = workspace_files
+    if "collaboration" in INSTALLED_MODULES:
+        from ..modules.collaboration.module import module as collaboration
+
+        registry[collaboration.name] = collaboration
     modules = resolve_modules(INSTALLED_MODULES, registry)
     validate_module_registrations(modules)
     return modules

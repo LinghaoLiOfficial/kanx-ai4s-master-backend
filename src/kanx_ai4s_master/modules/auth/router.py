@@ -284,9 +284,12 @@ async def user_context(
                 "id": organization.id,
                 "name": organization.name,
                 "slug": organization.slug,
-                "permissions": sorted(
-                    await roles.permissions(session, user.id, organization.id)
+                "kind": organization.kind,
+                "role": next(
+                    iter(sorted(await roles.role_names(session, user.id, organization.id))),
+                    "member",
                 ),
+                "permissions": sorted(await roles.permissions(session, user.id, organization.id)),
             }
             for organization in organizations
         ],

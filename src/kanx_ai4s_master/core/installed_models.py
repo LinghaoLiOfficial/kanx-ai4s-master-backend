@@ -6,6 +6,7 @@ from ..modules.rbac import models as _models_3  # noqa: F401
 from ..modules.storage import models as _models_4  # noqa: F401
 from ..modules.users import models as _models_6  # noqa: F401
 from ..modules.workspace_files import models as _models_5  # noqa: F401
+from ..modules.collaboration import models as _models_7  # noqa: F401
 
 REGISTERED_MODEL_MODULES = (
     "modules.database.audit.AuditEvent",
@@ -15,4 +16,5 @@ REGISTERED_MODEL_MODULES = (
     "modules.auth.models",
     "modules.storage.models",
     "modules.workspace_files.models",
+    "modules.collaboration.models",
 )

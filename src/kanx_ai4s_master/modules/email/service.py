@@ -15,6 +15,7 @@ SUBJECTS = {
     "verify_email": "Verify your email",
     "reset_password": "Reset your password",
     "security_notice": "Security notice",
+    "group_invite": "Group invitation",
 }
 
 
@@ -26,6 +27,10 @@ def render_template(name: str, context: dict[str, Any]) -> tuple[str, str]:
         lines.append(f"Verify your email: {context['url']}")
     elif name == "reset_password":
         lines.append(f"Reset your password: {context['url']}")
+    elif name == "group_invite":
+        lines.append(
+            f"{context['inviter']} invited you to join {context['group_name']}: {context['url']}"
+        )
     else:
         lines.append(str(context.get("message", "Your account security settings changed.")))
     return SUBJECTS[name], "\n".join(lines)

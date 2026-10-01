@@ -41,3 +41,16 @@
 - Actions: 检查 workspace_files 模型、API 路由、前端保存逻辑和 PostgreSQL 表结构，并查询当前记录。
 - Result: Mindmap JSON 存于 PostgreSQL `public.workspace_files.content`，通过 `workspace_files` API 读写；当前数据库中有 2 条 mindmap 记录。MinIO 不承载该 JSON。
 - Verification: `\d+ workspace_files` 和查询记录确认 `content` 类型为 `json`，查询到两条 `file_type='mindmap'` 数据。
+## 2026-09-30 21:05 +08 - 新增群组协作后端
+
+- Request: 实现群组角色、邀请、通用通知和独立文件空间后端能力。
+- Actions: 新增 `collaboration` 模块、组织类型/软删除字段、邀请与通知模型、群组/成员/邀请/通知 API、用户搜索、邀请邮件模板和 Alembic 迁移。
+- Result: owner/admin/member 权限、7 天一次性邀请、站内消息、群组文件权限和解散级联清理接入现有 RBAC 与工作区文件模块。
+- Verification: `make migrate` 成功；`uv run pytest -q` 13 项、目标 ruff/mypy 通过；API 健康检查正常。
+
+## 2026-10-01 14:30 +08 - 支持单字符用户搜索
+
+- Request: 将邀请成员搜索调整为输入 1 个字符即可搜索。
+- Actions: 将 `collaboration` 用户搜索路由的 `q` 参数最小长度从 2 调整为 1，并增加路由契约测试。
+- Result: 后端接受单字符用户搜索请求。
+- Verification: `uv run pytest -q tests/test_collaboration_contract.py`，4 项通过。

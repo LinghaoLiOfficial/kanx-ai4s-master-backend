@@ -25,6 +25,7 @@ class OrganizationService:
         organization = Organization(
             name=f"{display_name}'s organization",
             slug=f"{slugify_organization(display_name)}-{user_id[:8]}",
+            kind="personal",
         )
         session.add(organization)
         await session.flush()
@@ -58,6 +59,20 @@ class MembershipService:
 
 
 class RoleService:
+    async def role_names(
+        self, session: AsyncSession, user_id: str, organization_id: str
+    ) -> set[str]:
+        values = await session.scalars(
+            select(Role.name)
+            .join(MembershipRole, MembershipRole.role_id == Role.id)
+            .join(OrganizationMembership, OrganizationMembership.id == MembershipRole.membership_id)
+            .where(
+                OrganizationMembership.user_id == user_id,
+                OrganizationMembership.organization_id == organization_id,
+            )
+        )
+        return set(values)
+
     async def permissions(
         self, session: AsyncSession, user_id: str, organization_id: str
     ) -> set[str]:

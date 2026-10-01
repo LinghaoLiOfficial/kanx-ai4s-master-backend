@@ -38,6 +38,10 @@ Mindmap 数据直接存储在 PostgreSQL 的 `public.workspace_files` 表中：`
 
 ## Known Issues and Follow-ups
 
+`collaboration` 模块提供群组、成员、邀请和通知 API。组织使用 `kind=personal|group`；群组固定 `owner/admin/member` 角色，邀请 token 只保存 SHA-256 摘要并默认 7 天有效。`notifications` 支持未读计数、批量已读和软删除；群组文件继续按 `organization_id` 隔离。
+
+用户搜索接口 `GET /users/search` 的 `q` 参数最小长度为 1，支持邀请成员时使用单字符查询。
+
 仓库全量 `uv run pytest` 会在未启动本地 Temporal（`localhost:7233`）时于应用 lifespan 失败；认证专项测试不依赖 Temporal 或 PostgreSQL。完整端到端认证仍需 PostgreSQL、迁移、jobs dispatcher 与 SMTP/Mailpit。
 
 数据库连接验证可运行 `docker compose -f compose.yml ps`、`docker exec kanx-ai4s-master-postgres-1 pg_isready -U foundation -d kanx_ai4s_master`，需要建表时在后端目录执行 `make migrate`。若改用外部 PostgreSQL，至少同步修改 `.env` 中的 `DATABASE_URL`、`DATABASE_USER`、`DATABASE_PASSWORD`、`DATABASE_NAME` 和 `DATABASE_HOST_PORT`，并确保 URL 与前四项一致；不要把真实密码提交到 Git。

@@ -8,5 +8,6 @@ INSTALLED_MODULES = (
     "auth",
     "storage",
     "workspace_files",
+    "collaboration",
     "ai",
 )

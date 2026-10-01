@@ -19,7 +19,11 @@ class Organization(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=lambda: str(uuid4()))
     name: Mapped[str] = mapped_column(String(160))
     slug: Mapped[str] = mapped_column(String(100), unique=True, index=True)
+    kind: Mapped[str] = mapped_column(String(20), default="personal", index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
+    deleted_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True, index=True
+    )
 
 
 class OrganizationMembership(Base):
